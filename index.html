@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to css folder and file -->
+    <link rel="stylesheet" href="css/styles.css"/>
+
+    <!-- FONT AWESOME -->
+    <script
+        src="https://kit.fontawesome.com/3bfd3ce9e5.js"
+        crossorigin="anonymous"
+    ></script>
+    <title>Vanilla JS T3</title>
+</head>
+<body>
+    <!-- MAIN -->
+    <main>
+        <div class="grid">
+            <!-- You can hold "ALT" + clicks to select multiple text lines -->
+            <!-- PLAYER TURN INDICATOR -->
+            <div class="turn"> 
+                <!-- X icon -->
+                <i class="fa-solid fa-x turquoise"></i>
+                <p class="turquoise">Player 1, you're up!</p> 
+            </div>
+
+            <!-- DROPDOWN MENU -->
+            <div class="menu" data-id="menu">
+                <button class="menu-btn" data-id="menu-btn">Actions<i class="fa-solid fa-chevron-down"></i></button>
+
+                <div class="items border hidden" data-id="menu-items">
+                    <button data-id="reset-btn">Reset</button>
+                    <button data-id="new-round-btn">New Round</button>
+                </div>
+            </div>
+
+            <!-- GAME BOARD -->
+            <div id="1" class="square shadow" data-id="square"></div>
+            <div id="2" class="square shadow" data-id="square"></div>
+            <div id="3" class="square shadow" data-id="square"></div>
+            <div id="4" class="square shadow" data-id="square"></div>
+            <div id="5" class="square shadow" data-id="square"></div>
+            <div id="6" class="square shadow" data-id="square"></div>
+            <div id="7" class="square shadow" data-id="square"></div>
+            <div id="8" class="square shadow" data-id="square"></div>
+            <div id="9" class="square shadow" data-id="square"></div>
+
+            <!-- SCOREBOARD -->
+            <!-- "style=background-color: var(--colorname)" are inline-styles, optional and can be styled in a separate css file -->
+            <div class="score shadow" style="background-color: var(--turquoise)">
+                <p>Player 1</p>
+                    <span data-id="p1-wins"><a href="/">0 Wins</a></span>
+                </div>
+                <div class="score shadow" style="background-color: var(--light-gray)">
+                    <p>Ties</p>
+                    <span data-id="ties"><a href="/">0</a></span>
+                </div>
+                <div class="score shadow" style="background-color: var(--yellow)">
+                    <p>Player 2</p>
+                    <span data-id="p2-wins"><a href="/">0 Wins</a></span>
+                </div>
+            </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            A Project by
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Franc Javier</a>
+        </p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,238 @@
+/* IMPORTING GOOGLE FONT */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
+
+/* Initializing colors (ie. using var(--color-name) */
+:root {
+    --dark-gray: #1a2a32;
+    --gray: #2e4756;
+    --turquoise: #3cc4bf;
+    --yellow: #f2b147;
+    --light-gray: #d3d3d3;
+
+    --dark-purple: #47325C;
+    --pastel-purple: #AE7BD4;
+}
+
+/* CSS RESET */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: "Montserrat", sans-serif;
+    border: none;
+}
+
+html,
+body {
+    /* "height: 100%" ensures there is no padding at the bottom of the page on mobile devices */
+    height: 100%;
+    background-color: var(--dark-purple);
+}
+
+/* Centers the grids/divs */
+body {
+    padding: 90px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* SHARED UTILITY CLASSES */
+button:hover {
+    cursor: pointer;
+    opacity: 90%;
+}
+
+/* "!important" ensures nothing conflict with it */
+.hidden {
+    display: none !important;
+}
+
+.yellow {
+    color: var(--yellow);
+}
+
+.turquoise {
+    color: var(--turquoise);
+}
+
+/* Adds a shadow style */
+.shadow {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.border {
+    border: 1px solid rgba(211, 211, 211, 0.4) !important;
+}
+
+/* DESIGNED FOR MOBILE DEVICES FIRST THEN USE @media query to resize to desktop/tablet views */
+.grid {
+    display: grid;
+    /* Add columns x3 and make it 80px wide */
+    grid-template-columns: repeat(3, 80px);
+    /* "50px" = 50px tall | "repeat(3, 80px)" = Add x3 rows, 80px tall | "60px" = last row is 60px tall */
+    grid-template-rows: 50px repeat(3, 80px) 60px;
+    /* Adds a gap between grids */
+    gap: 5px;
+}
+
+/* Handles mobile device screen sizes */
+/* "min-width: 768px" = any screen with 768px or HIGHER (ie. Tablets, Desktops etc. */
+@media (min-width: 768px) {
+    .grid {
+        width: 490px;
+        /* If greater than 768px, make these changes (increase size from 80px to 150px), increase gap to 20px */
+        grid-template-columns: repeat(3, 150px);
+        grid-template-rows: 50px repeat(3, 150px) 60px;
+        gap: 20px;
+    }
+}
+
+/* ".grid div" selects anything with a class of "grid" and only selecting the div(s) inside it */
+/* .grid div {
+    background-color: var(--pastel-purple);
+} */
+
+/* MAIN STYLES */
+
+/* PLAYER TURN INDICATOR STYLES */
+.turn {
+    color: var(--yellow);
+    /* Spans the div with .turn class 2 column wide instead of just 1 */
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.turn p {
+    font-size: 14px;
+    animation: 0.6s ease-in-out turn-text-animation;
+}
+
+/* CSS ANIMATION for .turn p (Turn text) */
+@keyframes turn-text-animation {
+        0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+        100% {
+        opacity: 100%;
+        transform: translateX(0);
+    }
+}
+
+/* CSS ANIMATION for .turn i (Icon) */
+.turn i {
+    font-size: 1.8rem;
+    margin-left: 10px;
+    /* turn-icon-animation keyframe */
+    animation: 0.6s ease-in-out turn-icon-animation;
+}
+
+@keyframes turn-icon-animation {
+    /* At 0 percent of the duration (0.6s), transform the scale to 1 / 100% */
+    0% {
+        transform: scale(1);
+    }
+    /* At 25 percent of the duration (0.6s), transform the scale to 1 / 25% */
+        25% {
+        transform: scale(1.4);
+    }
+    /* At the end of the duration (0.6s), transform the scale to 1 / 100% */
+        100% {
+        transform: scale(1);
+    }
+}
+
+/* MENU STYLES */
+.menu {
+    position: relative;
+}
+
+.menu-btn {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    color: white;
+    /* 0.05 = 0.05 transparency */
+    background-color: rgba(211, 211, 211, 0.05);
+    border: 1px solid transparent;
+}
+
+.items {
+    position: absolute;
+    /* "z-index: 10" Ensures it doesn't go under the grid items */
+    z-index: 10;
+    top: 60px;
+    right: 0;
+    background-color: var(--dark-purple);
+    border-radius: 2px;
+    padding: 10px;
+}
+
+.items button {
+    background-color: transparent;
+    padding: 8px;
+    color: white;
+}
+
+/* GAME BOARD STYLES */
+.square {
+    background-color: var(--pastel-purple);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+
+/* Hover styles */
+.square:hover {
+    cursor: pointer;
+    opacity: 90%;
+}
+
+/* SCORE STYLES */
+.score {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.score a:visited, a:link, a:active {
+    color: black;
+    text-decoration: none;
+}
+
+/* On mouse hover, change mouse pointer style */
+.items button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* FOOTER STYLES */
+footer {
+    color: white;
+    margin-top: 50px;
+}
+
+footer p {
+    margin-top: 10px;
+    text-align: center;
+}
+
+footer a {
+    color: var(--yellow);
+    text-decoration: none;
+}
